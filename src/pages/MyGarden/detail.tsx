@@ -10,6 +10,7 @@ import {
 } from "recharts";
 import Sidebar from "../../components/sidebar";
 
+
 const growthData = [
   { day: 1, growth: 1 },
   { day: 3, growth: 3 },
@@ -22,7 +23,7 @@ const growthData = [
 export default function DetailGarden() {
   const [showSetupModal, setShowSetupModal] = useState(false);
   const [showTreatmentModal, setShowTreatmentModal] = useState(false);
-  const [treatmentText, setTreatmentText] = useState("Loading...");
+  const [treatmentText, setTreatmentText] = useState("Zzzz...");
   const [showHarvestModal, setShowHarvestModal] = useState(false);
   const [harvestData, setHarvestData] = useState({ weight: "", height: "" });
 
@@ -49,8 +50,7 @@ export default function DetailGarden() {
   ]);
   const handleTreatment = () => {
     setShowTreatmentModal(true);
-    setTreatmentText("Loading...");
-
+    
     setTimeout(() => {
       setTreatmentText("Treatment Success");
     }, 5000);
@@ -94,13 +94,11 @@ export default function DetailGarden() {
       {/* Modal Treatment */}
       {showTreatmentModal && (
         <div className="z-10 fixed inset-0 flex items-center justify-center bg-opacity-25 backdrop-blur-md">
-          <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+          <div className="bg-white w-[250px] p-6 rounded-lg shadow-lg text-center flex flex-col items-center">
             <h2 className="text-lg font-bold">{treatmentText}</h2>
-            {treatmentText === "Loading..." && (
-              <div className="mt-4 flex justify-center">
-                <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-green-500"></div>
+              <div className="loading flex justify-center w-12 h-12">
+                <img src="../../../public/assets/petir.gif" alt="Loading..." />
               </div>
-            )}
           </div>
         </div>
       )}
