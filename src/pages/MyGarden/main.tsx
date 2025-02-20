@@ -23,15 +23,14 @@ export default function MyGarden() {
     <div className="flex h-screen w-screen">
       {/* Sidebar */}
       <Sidebar />
-      <div className="p-6 bg-gray-100 h-screen w-full">
+      <div className="p-6 bg-gray-100 h-screen w-full overflow-y-auto">
         {/* Main Content */}
         <main className="flex-1 pl-6 p-6 shadow-xl bg-white">
-          <h2 className="p-5 text-3xl text-black font-bold">Garden</h2>
-          <h3 className="p-5 text-xl text-black">All Plants</h3>
-
+          <h2 className="p-2 text-3xl text-black font-bold">Garden</h2>
+          <h2 className="p-2 text-xl text-black">All Plants</h2>
           <div className="flex justify-end">
             <button
-              className="mt-4 px-4 py-2 bg-green-900 text-white rounded hover:bg-green-700"
+              className="mt-4 px-4 py-2 bg-green-900 text-white rounded-xl hover:bg-green-700"
               onClick={() => setShowModal(true)}
             >
               Add Garden +
@@ -47,16 +46,18 @@ export default function MyGarden() {
                 <img
                   src={garden.image}
                   alt={garden.name}
-                  className="w-full h-96 object-cover rounded mb-2 bg-white"
+                  className="w-full h-64 object-cover rounded mb-2 bg-white"
                 />
                 <h3 className="text-lg font-bold">{garden.name}</h3>
                 <p>{garden.days} Days</p>
                 <p>{garden.plants} Plants</p>
-                <Link to={"/detail-garden"}>
-                  <button className="mt-2 px-2 py-1 bg-gray-500 text-white rounded">
-                    Treated
-                  </button>
-                </Link>
+                <div className="flex justify-center">
+                  <Link to={"/detail-garden"}>
+                    <button className="mt-2 px-4 py-2 bg-green-900 hover:bg-green-700 text-white rounded-xl">
+                      Treated
+                    </button>
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -77,9 +78,9 @@ export default function MyGarden() {
                   placeholder="Enter the number of plant"
                   className="mt-4 p-3 w-full border border-gray-300 rounded-lg bg-white text-black"
                 />
-                <div className="flex justify-end mt-6 space-x-4">
+                <div className="flex justify-center mt-6 space-x-4">
                   <button
-                    className="px-4 py-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition"
+                    className="px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded-lg hover:bg-gray-500 transition"
                     onClick={() => setShowModal(false)}
                   >
                     Cancel

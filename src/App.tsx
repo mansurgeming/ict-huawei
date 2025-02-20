@@ -15,7 +15,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MyGarden />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="/my-garden" element={<MyGarden />} />
         <Route path="/detail-garden" element={<DetailGarden />} />
         <Route path="/dashboard" element={<Dashboard />} />

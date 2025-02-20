@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Sidebar from "../components/sidebar"
+import { Link } from "react-router-dom";
 
 const Dashboard: React.FC = () => {
     return (
