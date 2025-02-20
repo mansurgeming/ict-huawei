@@ -23,10 +23,10 @@ export default function DetailGarden() {
   const [tableData, setTableData] = useState([
     {
       dateTime: "29-01-2025 17:00:03",
-      voltage: "3.3V",
-      pulseFrequency: "50Hz",
-      electricField: "200 kV/m",
-      pipeLength: "10m",
+      voltage: "3.3",
+      pulseFrequency: "50",
+      electricField: "200",
+      pipeLength: "10",
       lastHeight: "15cm",
       lastHeightCheckTime: "29-01-2025 16:59:59",
     },
@@ -61,7 +61,7 @@ export default function DetailGarden() {
   };
 
   return (
-    <div className="flex h-screen w-screen">
+    <div className="flex h-screen w-screen bg-white">
       <Sidebar />
 
       <div className="p-6 bg-gray-100 h-screen w-full">
@@ -156,9 +156,9 @@ export default function DetailGarden() {
                   />
                 </div>
 
-                <div className="flex justify-end">
+                <div className="flex justify-center">
                   <button
-                    className="px-4 py-2 bg-gray-400 text-white rounded-lg mr-2"
+                    className="px-4 py-2 bg-red-500 text-white rounded-lg mr-2"
                     onClick={() => setShowSetupModal(false)}
                   >
                     Cancel
@@ -223,11 +223,11 @@ export default function DetailGarden() {
             <thead>
               <tr className="bg-gray-200 text-gray-700">
                 <th className="p-3 border text-black">Date Time</th>
-                <th className="p-3 border text-black">Voltage</th>
-                <th className="p-3 border text-black">Pulse Frequency</th>
-                <th className="p-3 border text-black">Electric Field</th>
-                <th className="p-3 border text-black">Pipe Length</th>
-                <th className="p-3 border text-black">Last Height</th>
+                <th className="p-3 border text-black">Voltage (V)</th>
+                <th className="p-3 border text-black">Pulse Frequency (Hz)</th>
+                <th className="p-3 border text-black">Electric Field (kV/m)</th>
+                <th className="p-3 border text-black">Pipe Length (m)</th>
+                <th className="p-3 border text-black">Last Height (cm)</th>
                 <th className="p-3 border text-black">
                   Last Height Check Time
                 </th>
