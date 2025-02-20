@@ -7,6 +7,7 @@ import Sidebar from "./components/sidebar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MyGarden from "./pages/MyGarden/main";
 import DetailGarden from "./pages/MyGarden/detail";
+import Dashboard from "./pages/Dahsboard"
 
 function App() {
   const [count, setCount] = useState(0);
@@ -14,8 +15,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<MyGarden />} />
         <Route path="/my-garden" element={<MyGarden />} />
         <Route path="/detail-garden" element={<DetailGarden />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+
       </Routes>
     </BrowserRouter>
   );
