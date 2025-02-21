@@ -19,7 +19,8 @@ const user = {
   avatar: "https://via.placeholder.com/40",
 };
 
-export default function Sidebar() {
+
+export default function Sidebar({ title }: {title:string}) {
   return (
     <aside className="w-64 bg-white h-screen p-4 flex flex-col justify-between text-black">
       {/* Logo Growvanta */}
@@ -35,30 +36,30 @@ export default function Sidebar() {
       <nav className="flex-1 mt-6">
         <ul className="flex flex-col gap-4">
           <Link to={"/"}>
-            <li className="py-3 px-4 hover:bg-green-800 rounded-xl cursor-pointer flex items-center gap-3">
+          <li className={`py-3 px-4 ${title === "dashboard" ? "bg-green-800 text-white" : "" } hover:bg-green-800 hover:text-white rounded-xl cursor-pointer flex items-center gap-3`}>
               <RxDashboard className="h-8 w-8" />
               Dashboard
             </li>
           </Link>
           <Link to={"/my-garden"}>
-            <li className="py-3 px-4 hover:bg-green-800 rounded-xl cursor-pointer flex items-center gap-3">
+            <li className={`py-3 px-4 ${title === "garden" ? "bg-green-800 text-white" : "" } hover:bg-green-800 hover:text-white rounded-xl cursor-pointer flex items-center gap-3`}>
               <RiPlantLine className="h-8 w-8" />
               My Garden
             </li>
           </Link>
-          <li className="py-3 px-4 hover:bg-green-700 rounded-xl cursor-pointer flex items-center gap-3">
+          <li className="py-3 px-4 hover:bg-green-700 hover:text-white rounded-xl cursor-pointer flex items-center gap-3">
             <PiDeviceTabletSpeakerLight className="h-8 w-8" />
             Device
           </li>
-          <li className="py-3 px-4 hover:bg-green-700 rounded-xl cursor-pointer flex items-center gap-3">
+          <li className="py-3 px-4 hover:bg-green-700 hover:text-white rounded-xl cursor-pointer flex items-center gap-3">
             <RiCustomerService2Line className="h-8 w-8" />
             Customer Service
           </li>
-          <li className="py-3 px-4 hover:bg-green-700 rounded-xl cursor-pointer flex items-center gap-3">
+          <li className="py-3 px-4 hover:bg-green-700 hover:text-white rounded-xl cursor-pointer flex items-center gap-3">
             <AiOutlineProduct className="h-8 w-8" />
             Product
           </li>
-          <li className="py-3 px-4 hover:bg-green-700 rounded-xl cursor-pointer flex items-center gap-3">
+          <li className="py-3 px-4 hover:bg-green-700 hover:text-white rounded-xl cursor-pointer flex items-center gap-3">
             <MdReportGmailerrorred className="h-8 w-8" />
             Report
           </li>

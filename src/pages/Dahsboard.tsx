@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Dashboard: React.FC = () => {
     return (
         <div className="h-screen w-screen flex gap-5">
-            <Sidebar />
+            <Sidebar title={'dashboard'} />
             <div className="h-full w-auto relative flex-grow">
                 <img 
                     src="/assets/Dashboard-BG.webp" 
@@ -15,7 +15,7 @@ const Dashboard: React.FC = () => {
 
                 {/* Marker 1 */}
                 <motion.div
-                    className="absolute top-10 left-60 flex flex-col items-center gap-2"
+                    className="absolute top-23 left-77 flex flex-col items-center gap-2"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
@@ -30,7 +30,7 @@ const Dashboard: React.FC = () => {
 
                 {/* Marker 2 */}
                 <motion.div
-                    className="absolute top-60 left-2 flex flex-col items-center gap-2"
+                    className="absolute top-80 left-28 flex flex-col items-center gap-2"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6, duration: 0.5 }}
@@ -48,7 +48,7 @@ const Dashboard: React.FC = () => {
 
                 {/* Marker 3 */}
                 <motion.div
-                    className="absolute top-8 right-52 flex flex-row items-center gap-2"
+                    className="absolute top-12 right-72 flex flex-row items-center gap-2"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.9, duration: 0.5 }}
@@ -63,7 +63,7 @@ const Dashboard: React.FC = () => {
 
                 {/* Marker 4 */}
                 <motion.div
-                    className="absolute top-28 right-12 flex flex-row items-center gap-2"
+                    className="absolute top-40 right-30 flex flex-row items-center gap-2"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 0.5 }}
@@ -78,7 +78,7 @@ const Dashboard: React.FC = () => {
 
                 {/* Marker 5 */}
                 <motion.div
-                    className="absolute top-48 right-2 flex flex-col items-center gap-2"
+                    className="absolute top-76 right-12 flex flex-col items-center gap-2"
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.5, duration: 0.5 }}

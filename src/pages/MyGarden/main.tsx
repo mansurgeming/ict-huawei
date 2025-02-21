@@ -9,12 +9,13 @@ import cabbageImg from "../../assets/image/cabbagehd.jpeg";
 import tomatoImg from "../../assets/image/tomatoes.jpeg";
 
 const dummyGardens = [
+  // { id: 1, name: "Pokcoy", days: 0, plants: 0, image: pokcoyImg },
   { id: 1, name: "Pokcoy", days: 10, plants: 4, image: pokcoyImg },
   { id: 2, name: "Lettuce", days: 8, plants: 6, image: lettuceImg },
   { id: 3, name: "Spinach", days: 12, plants: 5, image: spinachImg },
   { id: 4, name: "Kale", days: 15, plants: 7, image: kaleImg },
   { id: 5, name: "Cabbage", days: 20, plants: 3, image: cabbageImg },
-  { id: 6, name: "Tomato", days: 18, plants: 5, image: tomatoImg },
+  // { id: 6, name: "Tomato", days: 18, plants: 5, image: tomatoImg },
 ];
 
 export default function MyGarden() {
@@ -22,7 +23,7 @@ export default function MyGarden() {
   return (
     <div className="flex h-screen w-screen">
       {/* Sidebar */}
-      <Sidebar />
+      <Sidebar title={'garden'} />
       <div className="p-6 bg-gray-100 h-screen w-full overflow-y-auto">
         {/* Main Content */}
         <main className="flex-1 pl-6 p-6 shadow-xl bg-white">

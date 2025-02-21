@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -10,14 +10,17 @@ import {
 } from "recharts";
 import Sidebar from "../../components/sidebar";
 
-
 const growthData = [
+  // { day: 1, growth: 0 },
+  //Demo
   { day: 1, growth: 1 },
   { day: 3, growth: 3 },
   { day: 7, growth: 7 },
   { day: 14, growth: 12 },
   { day: 21, growth: 18 },
-  { day: 30, growth: 25 },
+  { day: 30, growth: 29 },
+  { day: 40, growth: 31 },
+  
 ];
 
 export default function DetailGarden() {
@@ -26,6 +29,37 @@ export default function DetailGarden() {
   const [treatmentText, setTreatmentText] = useState("Zzzz...");
   const [showHarvestModal, setShowHarvestModal] = useState(false);
   const [harvestData, setHarvestData] = useState({ weight: "", height: "" });
+  const texts = [
+    "Zz",
+    "Zzz",
+    "Zzz.",
+    "Zzz..",
+    "Zzz...",
+    "Z",
+    "Zz",
+    "Zzz",
+    "Zzz.",
+    "Zzz..",
+    "Zzz...",
+    "Treatment Success",
+  ];
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => {
+        const newIndex = prevIndex <= 10 ? (prevIndex + 1) % texts.length : 11;
+        if (showTreatmentModal) setTreatmentText(texts[newIndex]);
+        return newIndex;
+      });
+    }, 500); // Mengubah teks setiap 300ms
+
+    setTimeout(() => {
+      setShowTreatmentModal(false);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, [showTreatmentModal]);
 
   const handleHarvest = () => {
     setShowHarvestModal(true);
@@ -39,6 +73,14 @@ export default function DetailGarden() {
   };
   const [tableData, setTableData] = useState([
     {
+      // dateTime: "-",
+      // voltage: "-",
+      // pulseFrequency: "-",
+      // electricField: "-",
+      // pipeLength: "-",
+      // lastHeight: "-",
+      // lastHeightCheckTime: "-",
+      // Demo
       dateTime: "29-01-2025 17:00:03",
       voltage: "3.3",
       pulseFrequency: "50",
@@ -50,14 +92,14 @@ export default function DetailGarden() {
   ]);
   const handleTreatment = () => {
     setShowTreatmentModal(true);
-    
-    setTimeout(() => {
-      setTreatmentText("Treatment Success");
-    }, 5000);
 
-    setTimeout(() => {
-      setShowTreatmentModal(false);
-    }, 7000);
+    // setTimeout(() => {
+    //   setTreatmentText("Treatment Success");
+    // }, 5000);
+
+    // setTimeout(() => {
+    //   setShowTreatmentModal(false);
+    // }, 7000);
   };
 
   // Fungsi menambah baris tabel
@@ -65,13 +107,13 @@ export default function DetailGarden() {
     setTableData([
       ...tableData,
       {
-        dateTime: "",
-        voltage: "",
-        pulseFrequency: "",
-        electricField: "",
-        pipeLength: "",
-        lastHeight: "",
-        lastHeightCheckTime: "",
+        dateTime: "29-01-2025 17:00:03",
+        voltage: "3.3V",
+        pulseFrequency: "50Hz",
+        electricField: "200 kV/m",
+        pipeLength: "10m",
+        lastHeight: "15cm",
+        lastHeightCheckTime: "29-01-2025 16:59:59",
       },
     ]);
   };
@@ -90,15 +132,15 @@ export default function DetailGarden() {
 
   return (
     <div className="flex h-screen w-screen bg-white">
-      <Sidebar />
+      <Sidebar title={'garden'} />
       {/* Modal Treatment */}
       {showTreatmentModal && (
         <div className="z-10 fixed inset-0 flex items-center justify-center bg-opacity-25 backdrop-blur-md">
           <div className="bg-white w-[250px] p-6 rounded-lg shadow-lg text-center flex flex-col items-center">
             <h2 className="text-lg font-bold">{treatmentText}</h2>
-              <div className="loading flex justify-center w-12 h-12">
-                <img src="../../../public/assets/petir.gif" alt="Loading..." />
-              </div>
+            <div className="loading flex justify-center w-12 h-12">
+              <img src="../../../public/assets/petir.gif" alt="Loading..." />
+            </div>
           </div>
         </div>
       )}
@@ -184,13 +226,17 @@ export default function DetailGarden() {
 
             {/* Bungkus Derajat, Humidity, dan Ketinggian */}
             <div className="bg-green-100 p-4 rounded-lg mb-4 shadow-sm flex justify-around">
-              <p className="text-gray-700 font-semibold">26°C</p>
-              <p className="text-gray-700 font-semibold">80% Humidity</p>
-              <p className="text-gray-700 font-semibold">800 Mdpl</p>
+              <p className="text-gray-700 font-semibold">24°C</p>
+              <p className="text-gray-700 font-semibold">89% Humidity</p>
+              <p className="text-gray-700 font-semibold">791 Mdpl</p>
             </div>
 
             {/* Bungkus Data */}
             {[
+              // { label: "Plants Age", value: "-" },
+              // { label: "Last Treatment", value: "-" },
+              // { label: "Last Checking", value: "-" },
+              // Demo
               { label: "Plants Age", value: "16 Days" },
               { label: "Last Treatment", value: "29-01-2025 17:00:03 GMT(+7)" },
               { label: "Last Checking", value: "29-01-2025 17:00:03 GMT(+7)" },
@@ -271,7 +317,10 @@ export default function DetailGarden() {
           )}
           {/* Kotak Kanan - Grafik Growth */}
           <div className="bg-white p-6 rounded-2xl shadow-lg">
-            <h2 className="text-lg font-bold mb-4">Growth Progress</h2>
+            <div className="flex justify-center">
+              <h2 className="text-lg font-bold mb-4">Growth Progress</h2>
+            </div>
+
             <ResponsiveContainer width="100%" height={250}>
               <LineChart data={growthData}>
                 <CartesianGrid strokeDasharray="3 3" />
@@ -280,14 +329,17 @@ export default function DetailGarden() {
                   label={{
                     value: "Days",
                     position: "insideBottom",
-                    offset: -5,
+                    offset: -1,
+                    textAnchor: "middle",
                   }}
+                  tick={{ textAnchor: "middle" }}
                 />
                 <YAxis
                   label={{
                     value: "Growth (cm)",
                     angle: -90,
-                    position: "insideLeft",
+                    position: "center",
+                    textAnchor: "middle",
                   }}
                 />
                 <Tooltip />
@@ -304,8 +356,9 @@ export default function DetailGarden() {
 
         {/* Kotak Bawah - Tabel */}
         <div className="bg-white mt-6 p-6 rounded-2xl shadow-lg overflow-x-auto">
-          <h2 className="text-lg font-bold mb-4">Sensor Data</h2>
-
+          <div className="flex justify-center">
+            <h2 className="text-lg font-bold mb-4">Sensor Data</h2>
+          </div>
           {/* Tombol Add Row */}
           <div className="flex justify-end">
             <button
